@@ -10,6 +10,7 @@ onready var animation_player = $AnimationPlayer
 onready var travel_time = animation_player.get_animation("Bobbing").length
 
 var camera_active: SceneTreeTween = null
+var movement_locked = false
 
 var direction_map = {
 	"forward": Vector3.FORWARD,
@@ -24,6 +25,9 @@ var rotation_map = {
 }
 
 func _physics_process(delta):
+	if movement_locked:
+		return
+	
 	if camera_active and camera_active.is_running():
 		return
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://addons/level_block/level_block_node.gd" type="Script" id=1]
 [ext_resource path="res://scenes/entities/player/player.tscn" type="PackedScene" id=2]
@@ -6,10 +6,16 @@
 [ext_resource path="res://assets/tileset.png" type="Texture" id=4]
 [ext_resource path="res://default_env.tres" type="Environment" id=5]
 [ext_resource path="res://scenes/managers/encounter_manager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/managers/camera_manager.gd" type="Script" id=7]
 
 [node name="Scene" type="Spatial"]
 
 [node name="EncounterManager" parent="." instance=ExtResource( 6 )]
+camera_manager_path = NodePath("../CameraManager")
+
+[node name="CameraManager" type="Node" parent="."]
+script = ExtResource( 7 )
+player_path = NodePath("../Player")
 
 [node name="Blocks" type="Spatial" parent="."]
 
