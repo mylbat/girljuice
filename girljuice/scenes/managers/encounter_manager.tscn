@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/entities/encounter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/managers/encounter_manager.gd" type="Script" id=2]
+
+[node name="EncounterManager" type="Node"]
+script = ExtResource( 2 )
+enemy_billboard_scene = ExtResource( 1 )
+player_path = NodePath("../Player")

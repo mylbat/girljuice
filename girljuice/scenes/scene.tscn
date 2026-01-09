@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/level_block/level_block_node.gd" type="Script" id=1]
+[ext_resource path="res://scenes/entities/player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/level_block/default_material.tres" type="Material" id=3]
+[ext_resource path="res://assets/tileset.png" type="Texture" id=4]
+[ext_resource path="res://default_env.tres" type="Environment" id=5]
+[ext_resource path="res://scenes/managers/encounter_manager.tscn" type="PackedScene" id=6]
+
+[node name="Scene" type="Spatial"]
+
+[node name="EncounterManager" parent="." instance=ExtResource( 6 )]
+
+[node name="Blocks" type="Spatial" parent="."]
+
+[node name="LevelBlock22" type="Spatial" parent="Blocks"]
+lod_range = 0.0
+script = ExtResource( 1 )
+material = ExtResource( 3 )
+texture_sheet = ExtResource( 4 )
+texture_size = 48
+top_face = 1
+bottom_face = 1
+base_encounter_rate = 30
+
+[node name="LevelBlock2" type="Spatial" parent="Blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+script = ExtResource( 1 )
+material = ExtResource( 3 )
+texture_sheet = ExtResource( 4 )
+texture_size = 48
+west_face = 0
+top_face = 1
+bottom_face = 1
+base_encounter_rate = 30
+
+[node name="LevelBlock3" type="Spatial" parent="Blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2 )
+script = ExtResource( 1 )
+material = ExtResource( 3 )
+texture_sheet = ExtResource( 4 )
+texture_size = 48
+north_face = 0
+west_face = 0
+top_face = 1
+bottom_face = 1
+base_encounter_rate = 30
+
+[node name="LevelBlock4" type="Spatial" parent="Blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+script = ExtResource( 1 )
+material = ExtResource( 3 )
+texture_sheet = ExtResource( 4 )
+texture_size = 48
+north_face = 0
+top_face = 1
+bottom_face = 1
+base_encounter_rate = 30
+
+[node name="LevelBlock5" type="Spatial" parent="Blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2 )
+script = ExtResource( 1 )
+material = ExtResource( 3 )
+texture_sheet = ExtResource( 4 )
+texture_size = 48
+north_face = 0
+east_face = 0
+top_face = 1
+bottom_face = 1
+base_encounter_rate = 30
+
+[node name="LevelBlock6" type="Spatial" parent="Blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+script = ExtResource( 1 )
+material = ExtResource( 3 )
+texture_sheet = ExtResource( 4 )
+texture_size = 48
+east_face = 0
+top_face = 1
+bottom_face = 1
+base_encounter_rate = 30
+
+[node name="LevelBlock7" type="Spatial" parent="Blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2 )
+script = ExtResource( 1 )
+material = ExtResource( 3 )
+texture_sheet = ExtResource( 4 )
+texture_size = 48
+east_face = 0
+south_face = 0
+top_face = 1
+bottom_face = 1
+base_encounter_rate = 30
+
+[node name="LevelBlock8" type="Spatial" parent="Blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2 )
+script = ExtResource( 1 )
+material = ExtResource( 3 )
+texture_sheet = ExtResource( 4 )
+texture_size = 48
+south_face = 0
+top_face = 1
+bottom_face = 1
+base_encounter_rate = 30
+
+[node name="LevelBlock9" type="Spatial" parent="Blocks"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2 )
+script = ExtResource( 1 )
+material = ExtResource( 3 )
+texture_sheet = ExtResource( 4 )
+texture_size = 48
+south_face = 0
+west_face = 0
+top_face = 1
+bottom_face = 1
+base_encounter_rate = 30
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource( 2 )]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0361505, 0 )
+omni_range = 10.0
