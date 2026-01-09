@@ -8,9 +8,9 @@ signal texture_size_updated(new_size)
 const size = 1.0
 const occluder_multiplier = 1.001
 
-export(SpatialMaterial) var material = load("res://addons/level_block/default_material.tres")
+export(SpatialMaterial) var material = load("res://assets/materials/default_tile_material.tres")
 export(Texture) var texture_sheet setget set_texture
-export var texture_size = 32 setget set_texture_size
+export var texture_size = 48 setget set_texture_size
 
 export var north_face = -1 setget set_north
 export var east_face = -1 setget set_east
@@ -23,8 +23,7 @@ export var flip_faces = false setget set_flip_faces
 export var generate_collision = true setget set_generate_collision
 export var generate_occluders = false setget set_generate_occluders
 
-# Gameplay Parameters
-export var base_encounter_rate = 30.0
+export var base_encounter_rate = 10
 
 func set_texture(new_value):
 	texture_sheet = new_value
