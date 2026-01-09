@@ -23,7 +23,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/level_block/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 
