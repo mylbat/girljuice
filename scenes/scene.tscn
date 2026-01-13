@@ -7,7 +7,7 @@
 [ext_resource path="res://default_env.tres" type="Environment" id=5]
 [ext_resource path="res://scenes/managers/encounter_manager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/managers/camera_manager.gd" type="Script" id=7]
-[ext_resource path="res://resources/monsters/nour.tres" type="Resource" id=8]
+[ext_resource path="res://resources/monsters/mothman.tres" type="Resource" id=8]
 
 [node name="Scene" type="Spatial"]
 
