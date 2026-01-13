@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource( 1 )
 id = "1"
-name = "Mothman"
+name = "mothman"
 texture = ExtResource( 2 )
+frames = 8
