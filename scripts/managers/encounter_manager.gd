@@ -1,21 +1,28 @@
-extends Node
+extends Reference
+class_name EncounterManager
 
-export(PackedScene) var enemy_billboard_scene
-export(NodePath) var player_path
-export(NodePath) var camera_manager_path
-export(Array, Resource) var monster_pool
-
-export var edge_offset = 0.5
-export var spacing_offset = 0.66
-
-onready var player = get_node(player_path)
-onready var camera_manager = get_node(camera_manager_path)
+var handler: Node
+var enemy_billboard_scene: PackedScene
+var player: Node
+var camera_manager: CameraManager
+var monster_pool: Array
+var scene_root: Node
+var edge_offset = 0.49
+var spacing_offset = 0.66
 
 var rng = RandomNumberGenerator.new()
 
-func _ready():
+func _init(player_node, camera_manager_script, scene):
+	player = player_node
+	camera_manager = camera_manager_script
+	scene_root = scene
 	rng.randomize()
-	player.connect("tile_entered", self, "on_tile_entered")
+
+func set_monster_pool(pool):
+	monster_pool = pool
+
+func set_enemy_billboard_scene(scene):
+	enemy_billboard_scene = scene
 
 func spawn_encounter_ahead():
 	if monster_pool.empty():
@@ -29,7 +36,7 @@ func spawn_encounter_ahead():
 	
 	for i in range(encountered_monsters):
 		var enemy = enemy_billboard_scene.instance()
-		self.get_parent().add_child(enemy)
+		scene_root.add_child(enemy)
 		
 		var offset = (i - (encountered_monsters - 1) / 2.0) * spacing_offset
 		enemy.global_transform.origin = base_transform + right * offset
@@ -41,3 +48,8 @@ func spawn_encounter_ahead():
 func on_tile_entered(tile):
 	if rng.randi_range(0, 100) < tile.base_encounter_rate:
 		spawn_encounter_ahead()
+
+func end_encounter():
+	camera_manager.battle_end()
+	for element in scene_root.get_tree().get_nodes_in_group("battle node"):
+		element.queue_free()

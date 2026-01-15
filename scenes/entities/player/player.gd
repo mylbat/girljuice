@@ -9,7 +9,7 @@ onready var animation_player = $AnimationPlayer
 
 onready var travel_time = animation_player.get_animation("Bobbing").length
 
-var camera_active: SceneTreeTween = null
+var camera_active: SceneTreeTween
 var movement_locked = false
 
 var direction_map = {

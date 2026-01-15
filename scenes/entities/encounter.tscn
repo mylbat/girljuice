@@ -10,7 +10,7 @@ size = Vector2( 1, 1 )
 
 [sub_resource type="Gradient" id=6]
 interpolation_mode = 2
-offsets = PoolRealArray( 0.0387097, 0.529032, 1 )
+offsets = PoolRealArray( 0, 0.496774, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0.584314, 0, 0, 0, 0 )
 
 [sub_resource type="GradientTexture2D" id=7]
@@ -83,7 +83,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[node name="Encounter" type="Spatial"]
+[node name="Encounter" type="Spatial" groups=["battle node"]]
 process_priority = 1
 script = ExtResource( 2 )
 

@@ -4,7 +4,7 @@ onready var billboard = $Billboard
 onready var floor_cast = $FloorCast
 onready var manipulation_player = $ManipulationPlayer
 
-var monster = null
+var monster: MonsterSource
 var current_frame = 0
 var frame_timer = 0.0
 
