@@ -137,3 +137,5 @@ custom_fonts/normal_font = SubResource( 2 )
 tab_size = 0
 text = "000"
 scroll_active = false
+
+[node name="Tween" type="Tween" parent="."]

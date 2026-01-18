@@ -15,6 +15,7 @@ func _ready():
 	handler.connect("battle_started", self, "on_battle_started")
 	handler.connect("battle_ended", self, "on_battle_ended")
 	handler.connect("update_active_party", selection_grid, "update_active_party")
+	handler.connect("turn_started", self, "on_turn_started")
 
 func on_battle_started():
 	tween.interpolate_property(self, "rect_global_position", rect_global_position, encounter_position, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.7)
@@ -23,3 +24,11 @@ func on_battle_started():
 func on_battle_ended():
 	tween.interpolate_property(self, "rect_global_position", rect_global_position, default_position, 0.5, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	tween.start()
+	
+	selection_grid.reset_all_tabs()
+
+func on_turn_started(actor):
+	if actor["is_enemy"]:
+		selection_grid.reset_all_tabs()
+	else:
+		selection_grid.highlight_turn(actor)

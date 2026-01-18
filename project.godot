@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "PartyManager",
 "language": "GDScript",
 "path": "res://scripts/managers/party_manager.gd"
+}, {
+"base": "Reference",
+"class": "TurnManager",
+"language": "GDScript",
+"path": "res://scripts/managers/turn_manager.gd"
 } ]
 _global_script_class_icons={
 "CameraManager": "",
 "EncounterManager": "",
 "MonsterSource": "res://assets/misc/monster_resource_icon.svg",
-"PartyManager": ""
+"PartyManager": "",
+"TurnManager": ""
 }
 
 [application]
@@ -41,10 +47,6 @@ _global_script_class_icons={
 config/name="girljuice"
 run/main_scene="res://scenes/scene.tscn"
 config/icon="res://icon.png"
-
-[debug]
-
-settings/stdout/print_fps=true
 
 [display]
 

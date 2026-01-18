@@ -3,6 +3,9 @@ extends Node
 signal battle_started
 signal battle_ended
 signal update_active_party
+signal turn_started
+signal turn_changed
+signal turn_cycle_complete
 
 export(NodePath) var player_path
 export(PackedScene) var enemy_billboard_scene
@@ -14,6 +17,8 @@ onready var encounter_manager: EncounterManager
 onready var party_manager: PartyManager
 
 onready var player = get_node(player_path)
+
+var current_turn_actor = null
 
 func _ready():
 	initialise_managers()
@@ -33,12 +38,20 @@ func initialise_managers():
 	party_manager.handler = self
 
 func connect_signals():
-	player.connect("tile_entered", self, "_on_tile_entered")
+	player.connect("tile_entered", self, "on_tile_entered")
+	self.connect("turn_started", self, "on_turn_started")
 
 func _process(delta):
 	if Input.is_action_just_pressed("debug_end_battle"):
 		self.emit_signal("update_active_party", party_manager.active_party)
 		encounter_manager.end_encounter()
+	
+	if Input.is_action_just_pressed("ui_accept") and encounter_manager.is_battle_active():
+		encounter_manager.turn_manager.advance_turn()
 
-func _on_tile_entered(tile):
+func on_tile_entered(tile):
 	encounter_manager.on_tile_entered(tile)
+
+func on_turn_started(actor):
+	current_turn_actor = actor
+	print(actor["monster"].name, "'s turn")
