@@ -1,5 +1,9 @@
 extends Node
 
+signal battle_started
+signal battle_ended
+signal update_active_party
+
 export(NodePath) var player_path
 export(PackedScene) var enemy_billboard_scene
 export(Array, Resource) var monster_pool
@@ -33,6 +37,7 @@ func connect_signals():
 
 func _process(delta):
 	if Input.is_action_just_pressed("debug_end_battle"):
+		self.emit_signal("update_active_party", party_manager.active_party)
 		encounter_manager.end_encounter()
 
 func _on_tile_entered(tile):

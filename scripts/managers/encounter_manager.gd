@@ -12,6 +12,8 @@ var spacing_offset = 0.66
 
 var rng = RandomNumberGenerator.new()
 
+var encounters = []
+
 func _init(player_node, camera_manager_script, scene):
 	player = player_node
 	camera_manager = camera_manager_script
@@ -42,8 +44,10 @@ func spawn_encounter_ahead():
 		enemy.global_transform.origin = base_transform + right * offset
 		
 		enemy.attribute_monster(monster_pool[rng.randi_range(0, monster_pool.size() - 1)])
+		encounters.append(enemy)
 	
 	camera_manager.battle_start()
+	handler.emit_signal("battle_started")
 
 func on_tile_entered(tile):
 	if rng.randi_range(0, 100) < tile.base_encounter_rate:
@@ -51,5 +55,7 @@ func on_tile_entered(tile):
 
 func end_encounter():
 	camera_manager.battle_end()
-	for element in scene_root.get_tree().get_nodes_in_group("battle node"):
-		element.queue_free()
+	handler.emit_signal("battle_ended")
+	for enemy in encounters:
+		enemy.queue_free()
+	encounters = []

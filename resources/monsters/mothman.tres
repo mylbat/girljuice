@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 id = "1"
-name = "mothman"
+name = "Mothman"
 texture = ExtResource( 2 )
 frames = 8
+hit_points = 1

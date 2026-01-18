@@ -7,3 +7,9 @@ export var name = "no idea"
 
 export(Texture) var texture = null
 export var frames = 1
+
+export var hit_points = 1
+var current_hp: int
+
+func _init():
+	current_hp = hit_points

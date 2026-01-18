@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://addons/level_block/level_block_node.gd" type="Script" id=1]
 [ext_resource path="res://scenes/entities/player/player.tscn" type="PackedScene" id=2]
@@ -7,11 +7,13 @@
 [ext_resource path="res://default_env.tres" type="Environment" id=5]
 [ext_resource path="res://scenes/misc/manager_handler.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/monsters/player.tres" type="Resource" id=7]
+[ext_resource path="res://scenes/ui/encounter_HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://resources/monsters/mothman.tres" type="Resource" id=9]
 
 [node name="Scene" type="Spatial"]
 
 [node name="ManagerHandler" parent="." instance=ExtResource( 6 )]
-active_party = [ ExtResource( 7 ) ]
+active_party = [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ]
 
 [node name="Blocks" type="Spatial" parent="."]
 
@@ -111,12 +113,7 @@ shadow_color = Color( 0.156863, 0.156863, 0.156863, 1 )
 shadow_bias = 0.3
 omni_range = 10.0
 
-[node name="EncounterHUD" type="Control" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="PartyTabs" type="GridContainer" parent="EncounterHUD"]
-margin_right = 628.0
-margin_bottom = 40.0
-columns = 5
+[node name="EncounterHUD" parent="UI" instance=ExtResource( 8 )]
+handler_path = NodePath("../../ManagerHandler")

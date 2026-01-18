@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/ui/options.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ui/encounter_HUD.gd" type="Script" id=3]
+[ext_resource path="res://scenes/ui/party_tabs.gd" type="Script" id=4]
+
+[node name="EncounterHUD" type="Control"]
+anchor_left = 0.2
+anchor_top = 0.585
+anchor_right = 0.8
+anchor_bottom = 1.0
+margin_top = 0.0500031
+margin_right = -1.0
+script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Selection" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -130.0
+custom_constants/hseparation = 0
+columns = 4
+script = ExtResource( 4 )
+
+[node name="Options" parent="." instance=ExtResource( 2 )]
+anchor_top = 0.286
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.0320053
