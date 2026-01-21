@@ -21,7 +21,6 @@ func battle_start():
 		return
 	
 	in_battle = true
-	player.movement_locked = true
 	
 	player.get_child(5).play("Battle Transition")
 

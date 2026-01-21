@@ -23,6 +23,9 @@ var current_turn_actor = null
 func _ready():
 	initialise_managers()
 	connect_signals()
+	
+	yield(self.get_tree(), "idle_frame")
+	self.emit_signal("update_active_party", party_manager.active_party)
 
 func initialise_managers():
 	# reminder to myla that handler is necessary for signals to be emitted/connected by the handler node (the one with this script)
@@ -43,7 +46,6 @@ func connect_signals():
 
 func _process(delta):
 	if Input.is_action_just_pressed("debug_end_battle"):
-		self.emit_signal("update_active_party", party_manager.active_party)
 		encounter_manager.end_encounter()
 	
 	if Input.is_action_just_pressed("ui_accept") and encounter_manager.is_battle_active():
@@ -54,4 +56,4 @@ func on_tile_entered(tile):
 
 func on_turn_started(actor):
 	current_turn_actor = actor
-	print(actor["monster"].name, "'s turn")
+	print(actor["monster"].name,"'s turn")

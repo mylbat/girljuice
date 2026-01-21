@@ -16,8 +16,6 @@ func set_turn_order(party_manager, encounter_manager):
 	for i in range(encounter_manager.encounters.size()):
 		var monster = encounter_manager.encounters[i]
 		turn_order.append({"entity": monster, "type": "enemy", "is_enemy": true, "monster": monster.monster, "enemy_index": i})
-	
-	handler.emit_signal("turn_started", get_current_actor())
 
 func get_current_actor():
 	return turn_order[current_turn_index]

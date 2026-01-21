@@ -31,6 +31,7 @@ func is_battle_active():
 	return turn_manager != null
 
 func spawn_encounter_ahead():
+	player.movement_locked = true
 	if monster_pool.empty():
 		return
 	
@@ -56,6 +57,9 @@ func spawn_encounter_ahead():
 	
 	camera_manager.battle_start()
 	handler.emit_signal("battle_started")
+	
+	yield(handler.get_tree(), "idle_frame")
+	handler.emit_signal("turn_started", turn_manager.get_current_actor())
 
 func on_tile_entered(tile):
 	if not is_battle_active():

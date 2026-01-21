@@ -1,7 +1,6 @@
 extends TextureRect
 
-onready var info_panel = $Info
-onready var member_name = $Info/Name
+onready var member_name = $Name
 
 onready var hp_bar = $HitPointsBar
 onready var hp_progress = $HitPointsBar/Progress
@@ -36,7 +35,7 @@ func set_active(active):
 		unhighlight()
 
 func highlight():
-	tween.interpolate_property(self, "rect_position:y", rect_position.y, rect_position.y - 10.0, 0.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	tween.interpolate_property(self, "rect_position:y", rect_position.y, rect_position.y - 6.0, 0.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	tween.start()
 
 func unhighlight():
